@@ -32,13 +32,14 @@
 
 <main>
     {#key iterationCount}
-        <h1
-            in:fly={{ x: 300, duration: 800 }}
-            out:fly={{ x: -300, duration: 150 }}
-            style="color: {colorValue}"
-        >
-            {colorText}
-        </h1>
+        <div style="color: {colorValue}">
+            <h1
+                in:fly={{ x: 300, duration: 800 }}
+                out:fly={{ x: -300, duration: 150 }}
+            >
+                {colorText}
+            </h1>
+        </div>
     {/key}
 </main>
 
