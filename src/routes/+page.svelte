@@ -41,10 +41,8 @@
         'Green': '#00FF00',
         'Blue': '#0000FF',
         'Cyan': '#00FFFF',
-        'Magenta': '#FF00FF',
         'Orange': '#FFA500',
-        'Pink': '#FFC0CB',
-        'Lime': '#00FF00'
+        'Purple': '#A020F0',
     };
     const colorNames = Object.keys(colorMapForBlackBackground);
     function getRandomColorNames() {
