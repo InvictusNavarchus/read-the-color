@@ -1,5 +1,5 @@
 <main style='background-color: black'>
-    {#key colorText}
+    {#key iterationCount}
         <h1
             in:fly={{ x: 300, duration: 800 }}
             out:fly={{ x: -300, duration: 150 }}
@@ -54,10 +54,12 @@
     }
     let colorText = getRandomColorNames()
     let colorValue = colorMapForBlackBackground[getRandomColorNames()]
+    let iterationCount = 0
     function changeColor() {
         console.log('changeColor runs')
         colorText = getRandomColorNames()
         colorValue = colorMapForBlackBackground[getRandomColorNames()]
+        iterationCount++;
     }
 </script>
 
