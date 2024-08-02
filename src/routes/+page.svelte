@@ -1,59 +1,55 @@
 <script>
-    import { fly } from 'svelte/transition';
     import '../app.css';
-
-    const colorMapForBlackBackground = {
-        'White': '#FFFFFF',
-        'Red': '#FF0000',
-        'Yellow': '#FFFF00',
-        'Green': '#00FF00',
-        'Blue': '#0000FF',
-        'Cyan': '#00FFFF',
-        'Orange': '#FFA500',
-        'Purple': '#A020F0',
-    };
-
-    const colorNames = Object.keys(colorMapForBlackBackground);
-
-    function getRandomColorName() {
-        return colorNames[Math.floor(Math.random() * colorNames.length)];
-    }
-
-    let colorText = getRandomColorName();
-    let colorValue = colorMapForBlackBackground[getRandomColorName()];
-    let iterationCount = 0;
-
-    function changeColor() {
-        colorText = getRandomColorName();
-        colorValue = colorMapForBlackBackground[getRandomColorName()];
-        iterationCount++;
-    }
 </script>
-
 <main>
-    {#key iterationCount}
-        <div style="color: {colorValue}">
-            <h1
-                in:fly={{ x: 300, duration: 800 }}
-                out:fly={{ x: -300, duration: 150 }}
-            >
-                {colorText}
-            </h1>
-        </div>
-    {/key}
+    <div class="container">
+        <div class="color-box White">White</div>
+        <div class="color-box Red">Red</div>
+        <div class="color-box Yellow">Yellow</div>
+        <div class="color-box Green">Green</div>
+        <div class="color-box Blue">Blue</div>
+        <div class="color-box Cyan">Cyan</div>
+        <div class="color-box Orange">Orange</div>
+        <div class="color-box Purple">Purple</div>
+    </div>
 </main>
-
-<svelte:window on:keydown={changeColor}/>
-
 <style>
     main {
+        font-family: Arial, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: black;
+        margin: 0;
     }
-    h1 {
-        font-size: 15rem;
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        max-width: 600px;
     }
+    .color-box {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 1.2em;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .color-box:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .White { background-color: #FFFFFF; color: #000; }
+    .Red { background-color: #FF0000; }
+    .Yellow { background-color: #FFFF00; color: #000; }
+    .Green { background-color: #00FF00; color: #000; }
+    .Blue { background-color: #0000FF; }
+    .Cyan { background-color: #00FFFF; color: #000; }
+    .Orange { background-color: #FFA500; color: #000; }
+    .Purple { background-color: #A020F0; }
 </style>
