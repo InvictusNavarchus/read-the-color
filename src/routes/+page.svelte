@@ -1,10 +1,19 @@
 <main style='background-color: black'>
-    <h1 style="color: {colorValue}">{colorText}</h1>
+    {#key colorText}
+        <h1
+            in:fly={{ y: 200, duration: 200 }}
+            out:fly={{ y: 200, duration: 200 }}
+            style="color: {colorValue}"
+        >
+            {colorText}
+        </h1>
+    {/key}
 </main>
 
 <svelte:window on:keydown={changeColor}/>
 
 <script>
+    import { fly } from 'svelte/transition';
     import '../app.css'
     const colorMap = {
         red: '#FF0000',
