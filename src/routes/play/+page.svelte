@@ -1,5 +1,16 @@
 <script>
     import { fly } from 'svelte/transition';
+    import { nextKeys } from '$lib/keyevents';
+    let nextKeysSet;
+    $: nextKeys.subscribe(value => {
+        nextKeysSet = value;
+    });
+
+    function handleKeydown(event) {
+        if (nextKeysSet.has(event.key)) {
+            changeColor()
+        }
+    }
 
     const colorMapForBlackBackground = {
         'White': '#FFFFFF',
@@ -42,7 +53,7 @@
     {/key}
 </main>
 
-<svelte:window on:keydown={changeColor}/>
+<svelte:window on:keydown={handleKeydown}/>
 
 <style>
     main {
