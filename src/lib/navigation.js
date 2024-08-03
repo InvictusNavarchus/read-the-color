@@ -1,7 +1,7 @@
 import { goto } from '$app/navigation';
 import { writable } from 'svelte/store';
 
-const routes = ['/', '/intro', '/example/red', '/example/blue', '/play'];
+const routes = ['/', '/intro', '/example/red', '/example/blue', '/ready', '/countdown', '/play'];
 export const currentIndex = writable(0);
 
 export function nextSlide() {
