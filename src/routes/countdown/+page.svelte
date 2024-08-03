@@ -32,7 +32,7 @@
         background-color: #000;
         color: #fff;
         font-family: Arial, sans-serif;
-        font-size: 10vw;
+        font-size: 40vh;
         position: relative;
     }
     .countdown span {
