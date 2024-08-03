@@ -1,6 +1,16 @@
 import { goto } from '$app/navigation';
 import { writable } from 'svelte/store';
+import { nextKeys, prevKeys } from './keyevents';
 
+let nextKeysSet;
+let prevKeysSet;
+  // Reactive statements
+  $: nextKeys.subscribe(value => {
+    nextKeysSet = value;
+  });
+  $: prevKeys.subscribe(value => {
+    prevKeysSet = value;
+  });
 const routes = ['/', '/intro', '/example/red', '/example/blue', '/ready', '/countdown', '/play'];
 export const currentIndex = writable(0);
 
@@ -25,9 +35,9 @@ export function prevSlide() {
 }
 
 export function handleKeydown(event) {
-    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+    if (nextKeysSet.has(event.key)) {
         nextSlide();
-    } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+    } else if (prevKeysSet.has(event.key)) {
         prevSlide();
     }
 }

@@ -1,10 +1,18 @@
 import { handleKeydown } from './navigation';
+import { nextKeys } from './keyevents';
+
+let nextKeysSet
+  // Reactive statements
+  $: nextKeys.subscribe(value => {
+    nextKeysSet = value;
+  });
 
 export function keyboardNavigation(node) {
     const handleKeypress = (event) => {
+        console.log(nextKeysSet)
         if (window.location.pathname === '/play') {
-            if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-                return;
+            if (nextKeysSet.has(event.key)) {
+                return
             }
         }
         handleKeydown(event);
