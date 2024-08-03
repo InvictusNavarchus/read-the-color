@@ -21,27 +21,30 @@
         align-items: center;
         height: 100vh;
         margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
     }
     .container {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        max-width: 600px;
+        gap: 2vmin;
+        width: 95vw;
+        height: 95vh;
     }
     .color-box {
-        width: 150px;
-        height: 150px;
+        flex: 1 1 calc(25% - 2vmin);
+        min-width: 150px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: #ffffff;
-        font-size: 1.2em;
+        font-size: 3.3em;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s, box-shadow 0.3s;
     }
     .color-box:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
     .White { background-color: #FFFFFF; color: #000; }
