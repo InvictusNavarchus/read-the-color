@@ -14,30 +14,30 @@ let prevKeysSet;
 const routes = ['/', '/intro', '/example/red', '/example/blue', '/ready', '/countdown', '/play'];
 export const currentIndex = writable(0);
 
-export function nextSlide() {
+export function nextSlide(totalJump) {
     currentIndex.update(index => {
         if (index < routes.length - 1) {
-            goto(routes[index + 1]);
-            return index + 1;
+            goto(routes[index + totalJump]);
+            return index + totalJump;
         }
         return index;
     });
 }
 
-export function prevSlide() {
+export function prevSlide(totalJump) {
     currentIndex.update(index => {
         if (index > 0) {
-            goto(routes[index - 1]);
-            return index - 1;
+            goto(routes[index - totalJump]);
+            return index - totalJump;
         }
         return index;
     });
 }
 
-export function handleKeydown(event) {
+export function handleKeydown(event, totalJump) {
     if (nextKeysSet.has(event.key)) {
-        nextSlide();
+        nextSlide(totalJump);
     } else if (prevKeysSet.has(event.key)) {
-        prevSlide();
+        prevSlide(totalJump);
     }
 }

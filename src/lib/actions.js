@@ -1,10 +1,14 @@
 import { handleKeydown } from './navigation';
-import { nextKeys } from './keyevents';
+import { nextKeys, prevKeys } from './keyevents';
 
-let nextKeysSet
+let nextKeysSet;
+let prevKeysSet;
   // Reactive statements
   $: nextKeys.subscribe(value => {
     nextKeysSet = value;
+  });
+  $: prevKeys.subscribe(value => {
+    prevKeysSet = value;
   });
 
 export function keyboardNavigation(node) {
@@ -14,8 +18,12 @@ export function keyboardNavigation(node) {
             if (nextKeysSet.has(event.key)) {
                 return
             }
+            if (prevKeysSet.has(event.key)) {
+                handleKeydown(event, 2);
+                return;
+            }
         }
-        handleKeydown(event);
+        handleKeydown(event, 1);
     };
 
     window.addEventListener('keydown', handleKeypress);
