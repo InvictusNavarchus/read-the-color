@@ -63,6 +63,6 @@
         height: 100vh;
     }
     h1 {
-        font-size: 15rem;
+        font-size: clamp(1rem, 15vw, 40vh);
     }
 </style>

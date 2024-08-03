@@ -17,7 +17,7 @@
         text-align: center;
     }
     .word {
-        font-size: 40vh;
+        font-size: clamp(1rem, 15vw, 40vh);
         color: red;
     }
 </style>
