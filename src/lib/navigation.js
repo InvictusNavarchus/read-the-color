@@ -11,7 +11,7 @@ let prevKeysSet;
   $: prevKeys.subscribe(value => {
     prevKeysSet = value;
   });
-const routes = ['/', '/intro', '/example/red', '/example/blue', '/ready', '/countdown', '/play'];
+const routes = ['/', '/example/red', '/example/blue', '/intro', '/ready', '/countdown', '/play'];
 export const currentIndex = writable(0);
 
 export function nextSlide(totalJump) {

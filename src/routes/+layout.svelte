@@ -5,7 +5,7 @@
     import { currentIndex } from '$lib/navigation';
     import '../app.css';
 
-    const routes = ['/', '/intro', '/example/red', '/example/blue', '/ready', '/countdown', '/play'];
+    const routes = ['/', '/example/red', '/example/blue', '/intro', '/ready', '/countdown', '/play'];
 
     $: {
         $currentIndex = routes.indexOf($page.url.pathname);
